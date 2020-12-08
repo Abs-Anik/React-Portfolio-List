@@ -1,6 +1,5 @@
 import React from 'react';
-
-
+import "./App.css";
 class App extends React.Component {
   state = {
     welcomeMessage: "Welcome to My Mini Portfolio List Project",
@@ -73,7 +72,7 @@ class App extends React.Component {
       <div className="container" style={{ backgroundColor: '#1ABC9C' }}>
         <div className="row mb-2">
           <div className="container">
-            <div className="col-sm-12" style={{ backgroundColor: '#2C3E50' }}>
+            <div className="col-sm-12" style={{ backgroundColor: '#2C3E50', boxShadow: '-5px 5px 10px rgba(0,0,0,0.2), 5px 5px 10px rgba(0,0,0,0.2)' }}>
               <div style={{ display: 'flex', justifyContent: 'center' }}>
                 <img src={this.state.profileImg} alt="Md. Abu Bakkar Siddik" style={{ height: '200px', width: "200px", margin: '20px 0px 50px 0px', borderRadius: '50%' }} />
               </div>
@@ -85,50 +84,28 @@ class App extends React.Component {
           </div>
         </div>
         <div className="row">
-          <div className="col-sm-9">
-            <div className="card">
-              <div className="card-header">
-                Portfolio List
-          </div>
-              <div className="card-body">
-                <table className="table table-bordered">
-                  <thead>
-                    <th scope="col">#</th>
-                    <th scope="col">Title</th>
-                    <th scope="col">Description</th>
-                    <th scope="col">Project Completion Date</th>
-                    <th scope="col">Project Status</th>
-                    <th scope="col">Image</th>
-                    <th scope="col">Action</th>
-                  </thead>
-                  <tbody>
-                    {this.state.taskList.map((task, index) => (
-                      <tr key={index}>
-                        <td>{index + 1}</td>
-                        <td>{task.title}</td>
-                        <td>{task.description}</td>
-                        <td>{task.date}</td>
-                        <td>{task.status}</td>
-                        <td>
-                          <img src={task.url} alt="image" style={{ width: '50px', height: '50px' }} />
-                        </td>
-                        <td>
-                          <button
-                            className="btn btn-danger btn-sm"
-                            onClick={() => this.deleteTask(index)}
-                          >
-                            Delete
-                          </button>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
+          <div className="col-sm-8">
+            <div className="row">
+              {this.state.taskList.map((task, index) => (
+                <div className="col-sm-6 mb-4">
+                  <div className="card" style={{ boxShadow: '-5px 5px 10px rgba(0,0,0,0.2), 5px 5px 10px rgba(0,0,0,0.2)' }} key={index}>
+                    <img src={task.url} alt="image" className="card-img-top imageAnimation" style={{ height: '250px' }} />
+                    <div className="card-body">
+                      <h4 className="card-title text-center">{task.title}</h4>
+                      <p className="card-text">{task.description}</p>
+                      <p className="card-text">
+
+                        Project Status {task.status}
+                        <p className="card-text">{task.date}</p>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
-          <div className="col-sm-3 mb-4">
-            <div className="card">
+          <div className="col-sm-4 mb-4">
+            <div className="card" style={{ boxShadow: '-5px 5px 10px rgba(0,0,0,0.2), 5px 5px 10px rgba(0,0,0,0.2)' }}>
               <div className="card-header">
                 <span> Add New List </span>
               </div>
@@ -141,7 +118,8 @@ class App extends React.Component {
 
                   <div className="form-group">
                     <label for="description">Description</label>
-                    <input type="text" id="description" className="form-control" placeholder="Enter Description" value={this.state.description} onInput={(e) => this.setState({ description: e.target.value })} />
+                    {/* <input type="text" id="description" className="form-control" placeholder="Enter Description" value={this.state.description} onInput={(e) => this.setState({ description: e.target.value })} /> */}
+                    <textarea className="form-control" id="description" cols="30" rows="5" placeholder="Enter Description" value={this.state.description} onInput={(e) => this.setState({ description: e.target.value })}></textarea>
                   </div>
 
                   <div className="form-group">

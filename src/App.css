@@ -37,4 +37,13 @@
   }
 }
 
+.card img{
+  transition: 1s ease-in-out;
+}
+
+.card img:hover{
+  transform: scale(0.9);
+  
+}
+
 

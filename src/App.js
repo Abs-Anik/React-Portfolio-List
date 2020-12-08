@@ -1,5 +1,6 @@
 import React from 'react';
 import "./App.css";
+import WOW from 'wowjs';
 class App extends React.Component {
   state = {
     welcomeMessage: "Welcome to My Mini Portfolio List Project",
@@ -14,6 +15,7 @@ class App extends React.Component {
 
   componentDidMount() {
     this.initializeData();
+    new WOW.WOW().init();
   }
 
   initializeData = () => {
@@ -32,6 +34,21 @@ class App extends React.Component {
     }
     if (this.state.description === "") {
       alert("Please give a description");
+      return false;
+    }
+
+    if (this.state.date === "") {
+      alert("Please select date");
+      return false;
+    }
+
+    if (this.state.status === "") {
+      alert("Please select status");
+      return false;
+    }
+
+    if (this.state.url === "") {
+      alert("Please give a image url link");
       return false;
     }
 
@@ -91,7 +108,7 @@ class App extends React.Component {
                   <div className="card" style={{ boxShadow: '-5px 5px 10px rgba(0,0,0,0.2), 5px 5px 10px rgba(0,0,0,0.2)' }} key={index}>
                     <img src={task.url} alt="image" className="card-img-top imageAnimation" style={{ height: '250px' }} />
                     <div className="card-body">
-                      <h4 className="card-title text-center">{task.title}</h4>
+                      <h4 className="card-title text-center wow flipInY" data-wow-iteration="10">{task.title}</h4>
                       <p className="card-text">{task.description}</p>
                       <p className="card-text">
 
